@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/mongodb';
 import Post from '@/models/Post';
 
+export const runtime = 'nodejs';
+
 interface RouteParams {
   params: Promise<{
     id: string;

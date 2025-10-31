@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/mongodb';
 import Post from '@/models/Post';
 
+export const runtime = 'nodejs';
+
 // GET all posts
 export async function GET(request: NextRequest) {
   try {

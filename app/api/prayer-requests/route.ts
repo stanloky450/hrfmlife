@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/mongodb';
 import PrayerRequest from '@/models/PrayerRequest';
 
+export const runtime = 'nodejs';
+
 // GET all prayer requests
 export async function GET(request: NextRequest) {
   try {
