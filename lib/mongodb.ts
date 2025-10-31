@@ -1,3 +1,5 @@
+import mongoose from "mongoose";
+
 const MONGODB_URI =
 	process.env.MONGODB_URI || "mongodb://localhost:27017/hrfm-church";
 
@@ -6,8 +8,8 @@ if (!MONGODB_URI) {
 }
 
 interface MongooseCache {
-	conn: any | null;
-	promise: Promise<any> | null;
+	conn: typeof mongoose | null;
+	promise: Promise<typeof mongoose> | null;
 }
 
 declare global {
@@ -27,17 +29,11 @@ async function dbConnect() {
 	}
 
 	if (!cached.promise) {
-		cached.promise = (async () => {
-			const mongooseModule = await import("mongoose");
-			const mongoose = mongooseModule.default || mongooseModule;
+		const opts = {
+			bufferCommands: false,
+		};
 
-			const opts = {
-				bufferCommands: false,
-			};
-
-			await mongoose.connect(MONGODB_URI, opts);
-			return mongoose;
-		})();
+		cached.promise = mongoose.connect(MONGODB_URI, opts);
 	}
 
 	try {
