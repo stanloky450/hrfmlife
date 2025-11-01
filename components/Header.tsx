@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaTimes, FaPhone, FaPrayingHands } from "react-icons/fa";
+import Image from "next/image";
 
 const Header = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
@@ -42,10 +43,12 @@ const Header = () => {
 					<Link href="/" className="flex items-center space-x-2">
 						<div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
 							<FaPrayingHands className="text-white text-xl" />
-							<img
+							<Image
 								src="/image/HrfmLogo.png"
 								alt="HRFM Life logo"
 								className="w-12 h-12 rounded-full object-cover"
+								width={12}
+								height={12}
 							/>
 						</div>
 						<div>
